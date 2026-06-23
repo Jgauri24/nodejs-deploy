@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express API Demo</title>
+  <meta name="description" content="A simple and elegant interface to test Express routes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="glass-bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <main class="app-container">
+    <header class="app-header">
+      <div class="header-main">
+        <h1 class="logo-text">Express Connect</h1>
+        <p class="subtitle">Testing simple express routes</p>
+      </div>
+      <div class="time-widget" id="time-widget">
+        <div class="time-value" id="current-time">--:--:--</div>
+        <div class="date-value" id="current-date">---, --- --</div>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- API Status Card -->
+      <section class="card glass-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="icon">⚡</span>
+            <h2>Server Status (GET)</h2>
+          </div>
+          <span class="badge" id="status-badge">Checking...</span>
+        </div>
+
+        <div class="status-details">
+          <p><strong>App Name:</strong> <span id="info-name">Loading...</span></p>
+          <p><strong>Version:</strong> <span id="info-version">Loading...</span></p>
+          <p><strong>Uptime:</strong> <span id="info-uptime">Loading...</span> seconds</p>
+        </div>
+        
+        <button id="btn-refresh" class="btn-secondary" style="width: 100%;">Refresh Info</button>
+      </section>
+
+      <!-- Echo Test Card -->
+      <section class="card glass-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="icon">💬</span>
+            <h2>Echo Route (POST)</h2>
+          </div>
+        </div>
+
+        <form id="echo-form" class="note-creator" style="background: transparent; border: none; padding: 0;">
+          <input type="text" id="echo-input" placeholder="Type a message to echo..." required autocomplete="off">
+          <button type="submit" class="btn-primary" style="margin-top: 1rem; width: 100%; height: 50px; font-size: 1rem;">Send Message</button>
+        </form>
+
+        <div class="echo-response" id="echo-response-box" style="display: none; padding: 1rem; background: var(--bg-input); border: 1px solid var(--border-glass); border-radius: var(--radius-md);">
+          <p style="color: var(--color-muted); font-size: 0.85rem; margin-bottom: 0.25rem;">Server Response:</p>
+          <p id="echo-response-text" style="font-weight: 500; font-family: var(--font-logo); color: var(--accent-secondary);"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
