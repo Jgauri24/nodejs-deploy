@@ -1,0 +1,24 @@
+name: Deploy nodejs application to vm 
+on:
+  push:
+    branch:
+      - main
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to vm
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/nodejs-deploy
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart app
